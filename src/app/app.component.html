@@ -4,20 +4,30 @@
     Welcome to {{ title }}!
   </h1>
   <label for="id1">Nom:</label>
-  <input id="id1" type="text" (input)="setName(username.value)" value="{{user.name}}" #username/>
+  <!-- <input id="id1" type="text" (input)="setName(username.value)" value="{{user.name}}" #username/> -->
+  <input id="id1" type="text" [(ngModel)]="user.name"/>
   <br>
   <br>
   <label for="id2">Emploi:</label>
-  <input id="id2" type="text" (input)="setJob(userjob.value)" value="{{user.JobTitle}}" #userjob/>
+  <!-- <input id="id2" type="text" (input)="setJob(userjob.value)" value="{{user.JobTitle}}" #userjob/> -->
+  <input id="id2" type="text" [(ngModel)]="user.JobTitle"/>
   <br>
   <br>
   <label for="id3">Image:</label>
-  <input id="id3" type="text" (input)="setImage(userimage.value)" value="{{user.image}}" #userimage/>
+  <!-- <input id="id3" type="text" (input)="setImage(userimage.value)" value="{{user.image}}" #userimage/> -->
+  <input id="id3" type="text" [(ngModel)]="user.image"/>
+  <br>
+  <br>
+  <label for="id4">Urgent?</label>
+  <input id="id4" type="checkbox" [(ngModel)]="user.urgent">
   <br>
   <br>
   <div class="carte">
-    <h1>{{ user.name }}</h1>
-    <h2>{{ user.JobTitle }}</h2>
-    <img width="200" alt="image" src="{{ user.image }}">
+    <img class="img-carte" alt="image" src="{{ user.image }}">
+    <!-- <div class="text-carte" [style.color]="user.urgent ? 'red' : 'blue'"> -->
+    <div class="text-carte" [ngClass]="user.urgent ? 'red' : 'blue'">
+      <h2>{{ user.name }}</h2>
+      <p>{{ user.JobTitle }}</p>
+  </div>
   </div>
 </div>
