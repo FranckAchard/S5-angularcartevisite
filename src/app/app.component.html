@@ -1,5 +1,8 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<label>Connecté?</label>
+<input type="checkbox" [(ngModel)]="connected"/>
+<p *ngIf=!connected>Utilisateur non connecté!!!</p>
+<div style="text-align:center" *ngIf=connected>
   <h1>
     Welcome to {{ title }}!
   </h1>
@@ -19,15 +22,20 @@
   <br>
   <br>
   <label for="id4">Urgent?</label>
-  <input id="id4" type="checkbox" [(ngModel)]="user.urgent">
+  <input id="id4" type="checkbox" [(ngModel)]="urgent">
   <br>
   <br>
   <div class="carte">
     <img class="img-carte" alt="image" src="{{ user.image }}">
-    <!-- <div class="text-carte" [style.color]="user.urgent ? 'red' : 'blue'"> -->
-    <div class="text-carte" [ngClass]="user.urgent ? 'red' : 'blue'">
-      <h2>{{ user.name }}</h2>
-      <p>{{ user.JobTitle }}</p>
+    <!-- test style.color -->
+    <!-- <div class="text-carte" [style.color]="urgent ? 'red' : 'blue'"> -->
+      <!-- test ngClass -->
+      <div class="text-carte" [ngClass]="urgent ? 'red' : 'blue'">
+        <h2>{{ user.name }}</h2>
+        <p>{{ user.JobTitle }}</p>
+        <!-- test ngIf -->
+        <p *ngIf=urgent>URGENT!!!</p>
+      </div>
+    </div>
   </div>
-  </div>
-</div>
+  
